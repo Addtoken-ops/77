@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+<!--
+EOS开发大牛的小哥哥小姐姐们
+我知道你们都来看代码啦……特别说一下:
+本次活动用的全新账号私钥签名我们特意留在了前端
+大牛的您鼠标点点就可以看到啦。
+这是ADD开发单身小弟弟、小妹妹的留的七夕表白彩蛋和微信通关密码
+如果你也单身可以加微信beverly8878
+ADD团队还有2男2女还是单身，大家七夕约一下可好?
+另外同时招聘EOS开发人员两枚，这个就没有是否单身的要求了
+顺便送各位单身狗们一个福利
+
+              _.._
+            ,'      `.
+          /  __) __` \
+          (  (`-`(-')  )
+          /)  \  = /  (
+        /'    |++' .  \
+        (  ,+++|  `-.)__`
+        )(  `-.,++'   _`-.
+        '/,'          (  Uu",
+        (_       ,    `/,-' )
+        `.__,  : `-'/  /`++'
+          |     `++'  |
+          `   `-._   /
+            \        (
+            /\ .      \.
+          / |` \     ,-\
+          /  \| .)   /   \
+        ( ,'|\    ,'     :
+        | \,`.`++"/      }
+        `,'    \  |,'    /
+        / "-._   `-/      |
+        "-.   "-.,'|     ;
+      /        _/["+++'""]
+      :        /  |"-     '
+      '           |      /
+                  `      |
+-->
+<head>
+    <meta charset="utf-8">
+    <title>与你相恋 - 恋上加链 - ADD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+    <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        body {
+            margin-bottom: 60px;
+            font-family: "microsoft yahei";
+        }
+
+        body>.container {
+            padding: 0px 15px 0;
+        }
+
+        .container .text-muted {
+            margin: 20px 0;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .bottom {
+            margin-bottom: 20px;
+        }
+
+        .imgDiv {
+            max-width: 100%;
+            height: auto;
+            background-image: url('./78.png');
+            -moz-background-size: 100% 100%;
+            -o-background-size: 100% 100%;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+            -moz-border-image: url(./78.png) 0;
+            background-repeat: no-repeat\9;
+            background-image: none\9;
+            filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src='./78.png', sizingMethod='scale')\9;
+        }
+
+        .top {
+            margin-top: 30px;
+        }
+
+        .text-memo {
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .text-txid {
+            width: 10em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (max-width: 768px) {
+            .text-txid {
+                width: 2.2em;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .text-memo {
+                -webkit-line-clamp: 10;
+            }
+        }
+    </style>
+    <script>
+        $.validator.setDefaults({
+            submitHandler: function () {
+                transferTransaction();
+            }
+        });
+        $().ready(function () {
+            $("#commentForm").validate();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-light bg-faded">
+            <img src="./logo.png" alt="" />
+        </nav>
+        <div class="bottom">
+            <div class="imgDiv" style="max-width: 100%;height:auto;">
+                <img src="./78.png" class="img-responsive" style="max-width: 100%;height:auto;" alt="" />
+            </div>
+        </div>
+        <div class="top bottom">
+            <div class="col-md-10">
+                <label>告白信息: </label>
+            </div>
+            <form id="form1" onsubmit="return false" action="##" method="post">
+                <div class="col-md-10 bottom top">
+                    <div class="form-group row">
+                        <label for="send_from" class="col-sm-2 form-control-label">From:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="send_from" placeholder="你的名字或昵称(可选)">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="send_to" class="col-sm-2 form-control-label">To:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="send_to" placeholder="对方名字或昵称(可选)">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-11">
+
+                    <textarea id="send_message" maxlength="60" class="form-control" placeholder="告白内容" required></textarea>
+                </div>
+                <div class="col-md-1">
+                    </br>
+                    <input class="btn btn-primary" type="submit" onclick="insert()" style="height: 38px;width: 75px;" value="提交">
+                </div>
+            </form>
+        </div>
+        <div class="top bottom">
+            <table id="table" class="table table-bordered">
+            </table>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'https://api.coinmeta.cn/v1/actions?account=lovemessager&name=transfer&page=1&per_page=20',
+                type: "GET",
+                cache: true,
+                success: function (res) {
+                    if (res.code === 0) {
+                        //console.log(res.data)
+                        var tbale = document.querySelector('#table .table')
+                        var thead = '<thead><tr><th>TXID</th><th>memo</th></tr></thead>'
+                        var tbody = ''
+                        var tbodyTemplate = []
+                        tbodyTemplate = res.data.data.map(function (item, index) {
+                            let str = '<tr>' +
+                                '<td><a href="https://eosmonitor.io/txn/' + item.trx_id + '" target="_blank" > <div class= "text-txid"> ' + item.trx_id + '</div></a></td>' +
+                                '<td><div class = "text-memo">' + item.data.memo + '</div></td>' +
+                                '</tr>'
+                            return str
+                        })
+                        tbody = '<tbody>' + tbodyTemplate.join('') + '</tbody>'
+                        table.innerHTML = thead + tbody
+                    }
+                }
+            })
+        })
+    </script>
+    <script src="./ejs.js">
+    </script>
+    <script src="./eos.js">
+    </script>
+    <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+    <script src="https://cdn.bootcss.com/artDialog/7.0.0/dialog-plus.js"></script>
+    <script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+</body>
+
+</html>
